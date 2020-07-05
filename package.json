@@ -1,6 +1,6 @@
 {
   "name": "cms-demo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CMS system for demo purpose",
   "scripts": {
     "start": "node server/main.js",
@@ -25,7 +25,8 @@
     "fastify-helmet": "^3.0.2",
     "fastify-swagger": "^2.6.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
