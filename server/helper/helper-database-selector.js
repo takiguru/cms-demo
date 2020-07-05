@@ -7,7 +7,7 @@ function databaseSelector () {
     if (databaseConfig.useDatabase) {
         return new MongoDB()
     } else {
-        return new FileDatabase()
+        return FileDatabase
     }
 }
 

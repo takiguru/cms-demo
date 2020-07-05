@@ -82,4 +82,4 @@ class FileDatabase {
     }
 }
 
-module.exports = FileDatabase
+module.exports = new FileDatabase()
