@@ -1,1 +1,13 @@
-{}
+{
+    "server":{
+        "logger": true,
+        "plugins":{
+            "enableSwaggerEndpoint": true
+        },
+        "database": {
+            "useDatabase": false
+        },
+        "host": "localhost",
+        "port": 3000
+    }
+}
