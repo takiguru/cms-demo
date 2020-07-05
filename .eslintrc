@@ -8,6 +8,7 @@
     ],
     "extends": "standard",
     "rules": {
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "no-throw-literal": 0
     }
 }
