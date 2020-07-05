@@ -11,6 +11,7 @@ module.exports = {
         EditedAbstract: { type: 'string' },
         Genre: { type: 'string' },
         Name: { type: 'string' },
-        ProductionYear: { type: 'integer' }
+        ProductionYear: { type: 'integer' },
+        Id: { type: 'string' }
     }
 }

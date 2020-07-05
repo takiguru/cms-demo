@@ -13,11 +13,14 @@ module.exports = (fastify, opts, next) => {
     fastify.get(
         '/:contentId',
         feedSchema.get,
-        async (request, response) => {
+        async (request) => {
             const contentId = request.params.contentId
+            if (!contentId) {
+                throw { statusCode: 400, message: 'Content id missing' }
+            }
             const content = fastify.database.get(contentId)
             if (!content) {
-                return response.code(404).send('Content not found')
+                throw { statusCode: 404, message: 'Content not found' }
             }
             return { content }
         }
@@ -26,46 +29,46 @@ module.exports = (fastify, opts, next) => {
     fastify.put(
         '/:contentId',
         feedSchema.update,
-        async (request, response) => {
+        async (request) => {
             const contentId = request.params.contentId
             const content = request.body
             if (!contentId) {
-                return response.code(400).send('No contentId specified')
+                throw { statusCode: 400, message: 'No contentId specified' }
             }
             if (!content) {
-                return response.code(400).send('Missing content body')
+                throw { statusCode: 400, message: 'Missing content body' }
             }
-            fastify.database.update(contentId, JSON.parse(content))
-            return response.code(200).send('OK')
+            const updatedContent = fastify.database.update(contentId, JSON.parse(content))
+            return { header: { 'Content-Type': 'application/json' }, content: updatedContent }
         }
     )
 
     fastify.delete(
         '/:contentId',
         feedSchema.remove,
-        async (request, response) => {
+        async (request) => {
             const contentId = request.params.contentId
             if (!contentId) {
-                return response.code(400).send('No contentId specified')
+                throw { statusCode: 400, message: 'No contentId specified' }
             }
             const status = fastify.database.delete(contentId)
             if (!status) {
-                return response.code(400).send('Content not found')
+                throw { statusCode: 404, message: 'Content not found' }
             }
-            return response.code(200).send('OK')
+            return { statusCode: 200, message: 'OK' }
         }
     )
 
     fastify.post(
         '/',
         feedSchema.create,
-        async (request, response) => {
+        async (request) => {
             const content = request.body
             if (!content) {
-                return response.code(400).send('Missing content body')
+                throw { statusCode: 400, message: 'Missing content body' }
             }
-            fastify.database.create(JSON.parse(content))
-            return response.code(200).send('OK')
+            const createdContent = fastify.database.create(JSON.parse(content))
+            return { header: { 'Content-Type': 'application/json' }, content: createdContent }
         }
     )
 
