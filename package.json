@@ -6,7 +6,7 @@
     "start": "node server/main.js",
     "dev": "nodemon server/main.js",
     "lint": "eslint . --fix",
-    "test": "ENV NODE_ENV=test mocha --ui tdd --exit"
+    "test": "ENV NODE_ENV=test mocha 'test/**/*.test.js' --ui tdd --exit"
   },
   "repository": {
     "type": "git",
