@@ -36,7 +36,7 @@ class FileDatabase {
         this._isInitilized()
         const uuid = uuidGenerator.v4() // Maybe check for existence?
         this.db[uuid] = data
-        return this.db[uuid]
+        return Object.assign(this.db[uuid], { Id: uuid })
     }
 
     update (contentId, data) {
@@ -45,6 +45,7 @@ class FileDatabase {
             return false
         }
         this.db[contentId] = data
+        return this.db[contentId]
     }
 
     delete (contentId) {
@@ -73,7 +74,8 @@ class FileDatabase {
                 BackgroundUrl: content.BackgroundUrl,
                 ProductionYear: content.ProductionYear,
                 Genre: content.Genre,
-                AgeRating: content.AgeRating
+                AgeRating: content.AgeRating,
+                Id: contentKey
             })
         })
         return collection
