@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-expressions */
 const chai = require('chai')
 const expect = chai.expect
-const FileDatabaseModule = require('../../server/module/module-db-file')
-const fileDatabase = new FileDatabaseModule()
+const fileDatabase = require('../../server/module/module-db-file')
 
 suite('module-db-file', () => {
     test('Check if the content is created', async () => {
