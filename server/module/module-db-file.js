@@ -4,10 +4,10 @@ const uuidGenerator = require('uuid')
 class FileDatabase {
     constructor () {
         this._initialized = false
-        this.initialize(dbFile)
+        this._initialize(dbFile) // It's just a demo
     }
 
-    initialize (file) {
+    _initialize (file) {
         this.db = {}
         if (!file.Items) {
             console.error('\'Items\' array can\'t be found in \'feed.json\'')
@@ -36,6 +36,7 @@ class FileDatabase {
         this._isInitilized()
         const uuid = uuidGenerator.v4() // Maybe check for existence?
         this.db[uuid] = data
+        return this.db[uuid]
     }
 
     update (contentId, data) {
