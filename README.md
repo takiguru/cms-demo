@@ -15,6 +15,8 @@ CMS Demo
    
 ## Usage
 
+Set "useClientBundler:true" in the configuration file to use internal bundler and serve files for client
+
 URL : http://localhost:3000/ 
 
 Documentation: http://localhost:3000/swagger/ 

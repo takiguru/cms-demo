@@ -7,6 +7,7 @@
         "database": {
             "useDatabase": false
         },
+        "useClientBundler": true,
         "host": "localhost",
         "port": 3000
     }
