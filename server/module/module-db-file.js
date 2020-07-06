@@ -63,7 +63,7 @@ class FileDatabase {
         if (!this.db[contentId]) {
             return false
         }
-        return this.db[contentId]
+        return null
     }
 
     getFeed () {
@@ -80,7 +80,7 @@ class FileDatabase {
                 Id: contentKey
             })
         })
-        return collection
+        return null
     }
 }
 
