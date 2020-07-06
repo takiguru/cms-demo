@@ -80,7 +80,7 @@ class FileDatabase {
                 Id: contentKey
             })
         })
-        return collection
+        return null
     }
 }
 
