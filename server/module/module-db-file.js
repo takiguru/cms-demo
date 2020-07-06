@@ -4,10 +4,10 @@ const uuidGenerator = require('uuid')
 class FileDatabase {
     constructor () {
         this._initialized = false
-        this._initialize(dbFile) // It's just a demo
     }
 
-    _initialize (file) {
+    initialize () {
+        const file = dbFile
         this.db = {}
         if (!file.Items) {
             console.error('\'Items\' array can\'t be found in \'feed.json\'')
@@ -26,21 +26,22 @@ class FileDatabase {
         console.log(`File database loaded! Content amount: ${Object.keys(this.db).length}`)
     }
 
-    _isInitilized () {
+    isInitialized () {
         if (!this._initialized) {
             console.warn('Filedatabase is not initialized!')
         }
+        return this._initialized
     }
 
     create (data) {
-        this._isInitilized()
+        this.isInitialized()
         const uuid = uuidGenerator.v4() // Maybe check for existence?
         this.db[uuid] = data
         return Object.assign(this.db[uuid], { Id: uuid })
     }
 
     update (contentId, data) {
-        this._isInitilized()
+        this.isInitialized()
         if (!this.db[contentId]) {
             return false
         }
@@ -49,7 +50,7 @@ class FileDatabase {
     }
 
     delete (contentId) {
-        this._isInitilized()
+        this.isInitialized()
         if (!this.db[contentId]) {
             return false
         }
@@ -58,7 +59,7 @@ class FileDatabase {
     }
 
     get (contentId) {
-        this._isInitilized()
+        this.isInitialized()
         if (!this.db[contentId]) {
             return false
         }
@@ -66,7 +67,7 @@ class FileDatabase {
     }
 
     getFeed () {
-        this._isInitilized()
+        this.isInitialized()
         const collection = []
         Object.keys(this.db).forEach(contentKey => {
             const content = this.db[contentKey]
