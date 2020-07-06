@@ -63,7 +63,7 @@ class FileDatabase {
         if (!this.db[contentId]) {
             return false
         }
-        return this.db[contentId]
+        return null
     }
 
     getFeed () {
