@@ -74,6 +74,7 @@ class FileDatabase {
                 BackgroundUrl: content.BackgroundUrl,
                 ProductionYear: content.ProductionYear,
                 Genre: content.Genre,
+                Name: content.Name,
                 AgeRating: content.AgeRating,
                 Id: contentKey
             })
