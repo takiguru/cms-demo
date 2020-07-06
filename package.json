@@ -1,6 +1,6 @@
 {
   "name": "cms-demo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CMS system for demo purpose",
   "scripts": {
     "start": "node server/main.js",
