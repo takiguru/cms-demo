@@ -1,5 +1,8 @@
 {
     "server": {
-        "logger": false
+        "logger": false,
+        "database": {
+            "useDatabase": false
+        }
     }
 }

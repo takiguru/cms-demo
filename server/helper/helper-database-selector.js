@@ -5,8 +5,10 @@ const databaseConfig = config.get('server.database')
 
 function databaseSelector () {
     if (databaseConfig.useDatabase) {
-        return new MongoDB()
+        MongoDB.initialize()
+        return MongoDB
     } else {
+        FileDatabase.initialize()
         return FileDatabase
     }
 }

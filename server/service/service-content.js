@@ -5,7 +5,7 @@ module.exports = (fastify, opts, next) => {
         '/',
         feedSchema.getFeed,
         async () => {
-            const contents = fastify.database.getFeed()
+            const contents = await fastify.database.getFeed()
             return { contents }
         }
     )
@@ -18,7 +18,7 @@ module.exports = (fastify, opts, next) => {
             if (!contentId) {
                 throw { statusCode: 400, message: 'Content id missing' }
             }
-            const content = fastify.database.get(contentId)
+            const content = await fastify.database.get(contentId)
             if (!content) {
                 throw { statusCode: 404, message: 'Content not found' }
             }
@@ -38,7 +38,7 @@ module.exports = (fastify, opts, next) => {
             if (!content) {
                 throw { statusCode: 400, message: 'Missing content body' }
             }
-            const updatedContent = fastify.database.update(contentId, JSON.parse(content))
+            const updatedContent = await fastify.database.update(contentId, JSON.parse(content))
             return { header: { 'Content-Type': 'application/json' }, content: updatedContent }
         }
     )
@@ -51,7 +51,7 @@ module.exports = (fastify, opts, next) => {
             if (!contentId) {
                 throw { statusCode: 400, message: 'No contentId specified' }
             }
-            const status = fastify.database.delete(contentId)
+            const status = await fastify.database.delete(contentId)
             if (!status) {
                 throw { statusCode: 404, message: 'Content not found' }
             }
@@ -67,7 +67,7 @@ module.exports = (fastify, opts, next) => {
             if (!content) {
                 throw { statusCode: 400, message: 'Missing content body' }
             }
-            const createdContent = fastify.database.create(JSON.parse(content))
+            const createdContent = await fastify.database.create(JSON.parse(content))
             return { header: { 'Content-Type': 'application/json' }, content: createdContent }
         }
     )

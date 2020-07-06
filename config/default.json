@@ -5,7 +5,10 @@
             "enableSwaggerEndpoint": true
         },
         "database": {
-            "useDatabase": false
+            "useDatabase": true,
+            "host":"localhost",
+            "port": "27017",
+            "collection": "cmsdemo"
         },
         "useClientBundler": true,
         "host": "localhost",
