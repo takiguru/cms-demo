@@ -15,6 +15,8 @@ CMS Demo
    
 ## Usage
 
+Set "useDatabase": false" for file based database. Mongodb used by default.
+
 Set "useClientBundler:true" in the configuration file to use internal bundler and serve files for client
 
 URL : http://localhost:3000/ 
