@@ -10,7 +10,7 @@
             "port": "27017",
             "collection": "cmsdemo"
         },
-        "useClientBundler": false,
+        "useClientBundler": true,
         "host": "localhost",
         "port": 3000
     }
