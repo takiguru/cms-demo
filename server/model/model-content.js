@@ -42,7 +42,8 @@ const contentSchema = mongoose.Schema(
         },
         Name: {
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         ProductionYear: {
             type: Number,
@@ -50,6 +51,14 @@ const contentSchema = mongoose.Schema(
         }
     }
 )
+
+contentSchema.virtual('Id').get(function () {
+    return this._id.toHexString()
+})
+
+contentSchema.set('toJSON', {
+    virtuals: true
+})
 
 const Content = mongoose.model('Content', contentSchema)
 
